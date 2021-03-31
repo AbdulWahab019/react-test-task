@@ -56,5 +56,13 @@
     /* Experimental Options */
     // "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
-  }
+  },
+  "files": [
+    "server.ts",
+    "app/controllers/calculatorController.ts",
+    "app/models/response.ts",
+    "app/services/calculatorService.ts",
+    "app/utils/appUtils.ts",
+    "app/routes.ts"
+  ]
 }

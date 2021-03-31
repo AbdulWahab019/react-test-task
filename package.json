@@ -6,7 +6,7 @@
     "tsc": "tsc",
     "client": "cd client && npm start",
     "server": "node server.js",
-    "start": "npm install && tsc server && node server.js",
+    "start": "npm install && tsc && node server.js",
     "dev": "concurrently --kill-others-on-fail \"npm server\" \"npm client\"",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
