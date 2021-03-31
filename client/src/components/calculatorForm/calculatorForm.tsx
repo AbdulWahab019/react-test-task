@@ -4,8 +4,7 @@ import { QueryClient } from "react-query";
 import { getSum } from "../../services";
 import {
   CalculatorFormProps,
-  Event,
-  Sum,
+  SumAPIResponse,
 } from "../../models/calculatorFormModel";
 import { Input, Button, Form } from "antd";
 
@@ -20,15 +19,17 @@ function CalculatorForm(props: CalculatorFormProps) {
     if (number1 && number2) {
       queryClient
         .fetchQuery("sum", () => getSum(number1, number2))
-        .then((data: Sum) => {
-          setSum(data.sum.toString());
+        .then((res: SumAPIResponse) => {
+          if (res.code === 200) {
+            setSum(res.data.sum.toString());
+          }
         });
     }
   };
 
-  const onChangeHandler = (event: Event): void => {
-    if (event.target.name === "number1") setNumber1(event.target.value);
-    else setNumber2(event.target.value);
+  const onChangeHandler = (event: React.FormEvent<HTMLInputElement>): void => {
+    if (event.currentTarget.name === "number1") setNumber1(event.currentTarget.value);
+    else setNumber2(event.currentTarget.value);
   };
 
   useEffect(() => {
